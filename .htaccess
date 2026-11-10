@@ -1,0 +1,15 @@
+# GymZone – Apache settings (XAMPP and most shared hosting)
+# No folder listings: a folder without index.php is not shown as a list of files.
+Options -Indexes
+# Open index.php when a folder is requested.
+DirectoryIndex index.php
+
+# Never serve documentation, logs, SQL, locks or hidden files.
+<FilesMatch "(\.(md|sql|log|lock|ini|sh|json)$|^\.)">
+    Require all denied
+</FilesMatch>
+
+# Uncomment once the site has an HTTPS certificate:
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

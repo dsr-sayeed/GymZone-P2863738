@@ -1,0 +1,4 @@
+storage/logs/*.log
+storage/install.lock
+.DS_Store
+Thumbs.db
