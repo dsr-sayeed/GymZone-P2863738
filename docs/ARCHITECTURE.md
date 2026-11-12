@@ -68,7 +68,7 @@ erDiagram
 |---|---|
 | `apartments` | Apartment numbers (unique). Several residents can belong to one apartment. |
 | `users` | Residents and administrators. Key columns: `role` (resident or admin), `status` (pending, active or inactive), `password_hash` (NULL while pending), `apartment_id`, and `session_version` (raised on a password change to sign out other devices). Email and username are unique. CHECK constraints: a resident must have an apartment, and an active account must have a password. |
-| `zones` | Name, description, capacity (1–500). `is_open = 0` closes a zone until it is reopened. |
+| `zones` | Name, description, capacity (1–500). `is_open = 0` closes a zone until it is reopened. `notice` is an optional message for residents while the zone stays open (for example "1 treadmill is out of order"). |
 | `operating_hours` | One row per ISO weekday (1 = Monday): open flag, opening and closing time. The default is 00:00–24:00 every day (open around the clock). |
 | `closures` | Planned closures of the whole gym (`zone_id` NULL) or one zone, with a reason. |
 | `bookings` | One row per resident per session, for both bookings and walk-ins (`source`). `start_at` and `end_at` are the planned times, chosen to the minute; a walk-in starts at the minute of check-in. Status: booked, checked_in, completed, cancelled or released. The stored generated column `day_key` equals the date while a booking counts and is NULL once it is cancelled or released. The unique key `(user_id, zone_id, day_key)` therefore enforces "one session per zone per resident per day" in the database itself. |

@@ -513,6 +513,20 @@ test('Admin', 'Capacity cannot be reduced below the most people booked at the sa
     Zones::update($zones['Weights'], 'Weights', 'Free weights', 6);
     return "$msg | Raising it to 6 is accepted";
 });
+// A zone notice is shown to residents while the zone stays open, is kept when not sent, and can be removed.
+test('Admin', 'A zone notice is shown on the dashboard, kept when not sent, and removed when cleared', function () use ($zones) {
+    $c = Zones::find($zones['Cardio']);
+    $cardio = fn() => array_values(array_filter(Availability::overview()['zones'], fn($z) => $z['id'] === $zones['Cardio']))[0];
+    Zones::update($zones['Cardio'], $c['name'], $c['description'], (int) $c['capacity'], '  1 treadmill is out of order  ');
+    same('1 treadmill is out of order', $cardio()['notice'], 'notice after saving (trimmed)');
+    check($cardio()['status'] !== 'closed', 'a notice must not close the zone');
+    Zones::update($zones['Cardio'], $c['name'], $c['description'], (int) $c['capacity']);
+    same('1 treadmill is out of order', Zones::find($zones['Cardio'])['notice'], 'notice when not sent');
+    $long = refused(fn() => Zones::update($zones['Cardio'], $c['name'], $c['description'], (int) $c['capacity'], str_repeat('x', 256)));
+    Zones::update($zones['Cardio'], $c['name'], $c['description'], (int) $c['capacity'], '');
+    same(null, $cardio()['notice'], 'notice after clearing');
+    return "Too long: $long | Cleared notice is stored as NULL";
+});
 // Closing a zone first asks for confirmation (nothing changes), then cancels the bookings and emails residents.
 test('Admin', 'Closing a zone asks for confirmation, then cancels affected bookings and emails residents', function () use ($zones) {
     $n = 0;

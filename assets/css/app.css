@@ -198,6 +198,9 @@ input[readonly] { background: var(--navy-50); color: var(--text-2); }
 .zone-actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
 .zone-actions .btn { flex: 1; }
 .zone-closed-note { font-size: .88rem; color: var(--text-2); background: #f2f4f7; padding: 8px 10px; border-radius: 8px; }
+/* A zone notice ("1 treadmill is out of order"): amber, like "Few places left". No display rule, so [hidden] still hides it. */
+.zone-notice { margin: 0; font-size: .88rem; color: var(--amber); background: var(--amber-soft); border-left: 3px solid var(--amber-500); padding: 8px 10px; border-radius: 8px; }
+#zone-notice { margin-top: 10px; }
 .highlight-card { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
 .highlight-card .hc-main { display: flex; gap: 14px; align-items: center; }
 .hc-icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--navy-50); color: var(--navy); flex: none; }

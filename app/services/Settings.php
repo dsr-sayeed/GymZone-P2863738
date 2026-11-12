@@ -14,7 +14,7 @@ final class Settings
         'contact_email'          => '',     // shown on the Help page; contact messages are emailed here
         'contact_phone'          => '',
         'contact_hours'          => '',
-        'schema_version'         => '2',
+        'schema_version'         => '3',
     ];
     // The settings, loaded once per request.
     private static ?array $cache = null;

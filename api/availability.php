@@ -23,7 +23,7 @@ Http::api(function () use ($uid) {
         case 'calendar':
             // The 21 days, the zones and the session lengths (booking.js asks when the page opens).
             Http::ok(['days' => Availability::calendar($uid),
-                      'zones' => array_map(fn($z) => ['id' => (int) $z['id'], 'name' => $z['name'], 'description' => $z['description'], 'capacity' => (int) $z['capacity'], 'open' => (bool) $z['is_open']], Zones::all()),
+                      'zones' => array_map(fn($z) => ['id' => (int) $z['id'], 'name' => $z['name'], 'description' => $z['description'], 'capacity' => (int) $z['capacity'], 'open' => (bool) $z['is_open'], 'notice' => $z['notice'] ?? null], Zones::all()),
                       'default_minutes' => Settings::int('session_minutes'), 'max_minutes' => Settings::int('max_session_minutes'),
                       'now' => Clock::now()->format('Y-m-d H:i')]);
         case 'day':

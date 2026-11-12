@@ -106,7 +106,8 @@ final class Availability
             $closed = $open ? Schedule::closedReason($z, $now, $soon) : 'The gym is closed now';
             $zones[] = ['id' => $id, 'name' => $z['name'], 'description' => $z['description'], 'capacity' => (int) $z['capacity'],
                         'booked' => $booked, 'checked_in' => $inside, 'available' => $available,
-                        'status' => $closed ? 'closed' : self::status($available, (int) $z['capacity']), 'closed' => $closed];
+                        'status' => $closed ? 'closed' : self::status($available, (int) $z['capacity']), 'closed' => $closed,
+                        'notice' => $z['notice'] ?? null];
         }
         // open_now, the next opening if closed, the zones, and the time of this update.
         return ['open_now' => $open, 'next_opening' => $open ? null : self::nextOpening($now), 'zones' => $zones, 'updated' => $now->format('H:i:s')];

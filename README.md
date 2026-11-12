@@ -190,7 +190,7 @@ On a phone, the bottom tab bar has Home, Residents, Gym, Bookings and Messages. 
 |---|---|
 | **Overview** | Total residents, active accounts, pending activations, today's sessions, people in the gym now, open messages, zone availability, who is checked in (with their planned end), planned closures. |
 | **Residents** | **Add resident** (full name, apartment, email) sends an activation email valid for 24 hours. You can search; open a resident; change their name or apartment; **Resend invitation**; **Deactivate** or **Reactivate**, which emails the resident; and, in a discreet section, **Delete account**, which also emails them. Deactivating cancels the resident's upcoming bookings. |
-| **Gym** | **Zones**: name, description, capacity, temporary closure. **Hours and rules**: weekly hours, session lengths, check-in rules, automatic check-out. **Closures**: close the whole gym or one zone for a period. |
+| **Gym** | **Zones**: name, description, capacity, a notice for residents (for example "1 treadmill is out of order"), temporary closure. **Hours and rules**: weekly hours, session lengths, check-in rules, automatic check-out. **Closures**: close the whole gym or one zone for a period. |
 | **Bookings** | View by date, zone and status. Each row shows the booked time and the real time in the gym, marked "left early", "stayed longer", "automatic check-out" or "time reported by resident". You can cancel a booking with a reason (the resident is emailed) and check out a resident who forgot. |
 | **Messages** | Messages residents send from Help: reply by email, and mark them handled or open again. Also the contact details shown to residents. |
 

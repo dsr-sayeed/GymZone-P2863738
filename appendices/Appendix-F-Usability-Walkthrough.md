@@ -32,7 +32,7 @@ One problem was found. When a second person signed in from another tab of the sa
 
 ## Limits of the walkthrough
 
-Because the walkthrough was carried out by the person who designed the system, it shows that every main task has a clear and working route through the interface, but not how residents who have never seen GymZone would experience it. It also showed that a broken machine can only be handled by closing its whole zone, temporarily or for a set period, because GymZone has no record of individual equipment. A test with residents and a status for individual equipment are therefore described as future work in Chapter Six.
+Because the walkthrough was carried out by the person who designed the system, it shows that every main task has a clear and working route through the interface, but not how residents who have never seen GymZone would experience it. It also showed that a broken machine can only be handled by closing its whole zone, temporarily or for a set period, because GymZone has no record of individual equipment. After the walkthrough, a notice per zone was added so that a broken machine can be announced to residents without closing the zone ([Appendix B](Appendix-B-Design-Change-Log.md)); it was covered by an automated test but not by this walkthrough. A test with residents and a status for individual equipment remain future work, described in Chapter Six.
 
 ---
 [Back to the list of appendices](README.md) · [Back to the repository](../README.md)

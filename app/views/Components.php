@@ -18,6 +18,8 @@ final class Components
     <div><h3><?= View::e($z['name']) ?></h3><p class="zone-desc"><?= View::e($z['description']) ?></p></div>
     <span class="pill pill-<?= View::e($z['status']) ?>" data-field="pill"><?= View::e(self::STATUS_LABELS[$z['status']]) ?></span>
   </div>
+  <?php // The zone notice, for example "1 treadmill is out of order" (hidden when there is none). ?>
+  <p class="zone-notice" data-field="notice"<?= empty($z['notice']) ? ' hidden' : '' ?>><?= View::e($z['notice'] ?? '') ?></p>
   <div class="zone-count"><strong data-field="available"><?= (int) $z['available'] ?></strong><span class="muted">of <span data-field="capacity"><?= (int) $z['capacity'] ?></span> places available</span></div>
   <div class="meter" role="img" aria-label="<?= $used ?>% of places taken"><span data-field="bar" data-pct="<?= $used ?>"></span></div>
   <div class="zone-meta"><span><b data-field="checked_in"><?= (int) $z['checked_in'] ?></b> in the gym</span><span><b data-field="booked"><?= (int) $z['booked'] ?></b> booked now, not yet arrived</span></div>

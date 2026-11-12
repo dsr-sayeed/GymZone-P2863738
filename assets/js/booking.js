@@ -81,6 +81,11 @@
       b.addEventListener('click', () => { state.zone = z.id; renderZones(); loadDay(); });
       box.appendChild(b);
     });
+    // The chosen zone's notice, for example "1 treadmill is out of order".
+    const chosen = state.zones.find((z) => z.id === state.zone);
+    const notice = $('zone-notice');
+    notice.hidden = !(chosen && chosen.notice);
+    notice.textContent = chosen && chosen.notice ? chosen.notice : '';
   }
 
   /** On today, start at the next quarter hour; on other days keep the chosen time (or 17:00). */

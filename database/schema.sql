@@ -48,6 +48,9 @@ CREATE TABLE IF NOT EXISTS zones (
     capacity     SMALLINT UNSIGNED NOT NULL,
     is_open      TINYINT(1) NOT NULL DEFAULT 1,
     closed_note  VARCHAR(255) NULL,
+    -- notice: a short message shown to residents while the zone stays open, for example
+    -- "1 treadmill is out of order". NULL when there is no notice.
+    notice       VARCHAR(255) NULL,
     -- sort_order: the order in which zones are shown.
     sort_order   SMALLINT NOT NULL DEFAULT 0,
     UNIQUE KEY uq_zones_name (name),

@@ -17,5 +17,13 @@ The table records the material changes between the first and second working vers
 | Help | No help or contact route. | A help page and a contact form for signed-in residents. | Residents who find a problem need a way to reach the housing office from inside the service. |
 | Small screens | Mainly designed for larger screens. | Phone-first layout for residents and administrators, with a bottom tab bar. | Residents are most likely to check availability on a phone. |
 
+## Change after the usability walkthrough
+
+The usability walkthrough ([Appendix F](Appendix-F-Usability-Walkthrough.md)) showed that a single broken machine could only be handled by closing its whole zone. One change was made in response.
+
+| Issue identified | Before | After | Reason |
+|---|---|---|---|
+| Broken equipment | The only way to warn residents about a broken machine was to close its whole zone, which cancels bookings and refuses walk-ins. | An administrator can add a short notice to a zone (for example "1 treadmill is out of order"). It is shown on the dashboard and the booking page while the zone stays open, and can be removed at any time. | Residents are told before they arrive, while the rest of the zone can still be booked and used. GymZone still has no record of individual machines. |
+
 ---
 [Back to the list of appendices](README.md) · [Back to the repository](../README.md)

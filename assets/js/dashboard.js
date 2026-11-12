@@ -25,6 +25,9 @@
       bar.dataset.pct = z.capacity ? Math.round(100 * (z.capacity - z.available) / z.capacity) : 0;
       const closed = card.querySelector('[data-field="closed"]');
       closed.hidden = !z.closed; closed.textContent = z.closed || '';
+      // The zone notice, for example "1 treadmill is out of order".
+      const notice = card.querySelector('[data-field="notice"]');
+      if (notice) { notice.hidden = !z.notice; notice.textContent = z.notice || ''; }
       // The walk-in button is disabled when the zone is full or closed.
       const walk = card.querySelector('[data-walkin]');
       if (walk) walk.disabled = z.status === 'full' || z.status === 'closed';

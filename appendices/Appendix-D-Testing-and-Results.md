@@ -6,7 +6,7 @@ GymZone was tested through automated functional tests, an automated responsive-l
 
 ## Testing approach
 
-- **Automated functional tests:** 49 tests of business rules, email flows and HTTP access control (`tests/run_tests.php`).
+- **Automated functional tests:** 50 tests of business rules, email flows and HTTP access control (`tests/run_tests.php`).
 - **Automated responsive-layout check:** every resident and administrator page at four screen sizes (`tests/responsive_check.py`).
 - **Manual walkthrough:** twelve end-to-end user journeys in a browser on a phone-sized screen.
 - The automated test database (`gymzone_test`) is rebuilt from the schema on each run, and the application clock is fixed (Monday 2 November 2026, 10:05) so that time-based tests are repeatable.
@@ -14,9 +14,9 @@ GymZone was tested through automated functional tests, an automated responsive-l
 
 ## Table D.1. Full automated functional-test results
 
-Run 2026-11-04 20:32 with `php tests/run_tests.php`.
+Run 2026-11-12 11:09 with `php tests/run_tests.php`.
 
-**Result: 49 passed, 0 failed, 0 skipped (49 tests).**
+**Result: 50 passed, 0 failed, 0 skipped (50 tests).**
 
 | Area | Test | Result | Details |
 |---|---|---|---|
@@ -56,6 +56,7 @@ Run 2026-11-04 20:32 with `php tests/run_tests.php`.
 | Check-out | After 6 hours a resident is checked out automatically and asked for the real time | PASS | Auto check-out at 18:10 / Out of range: Please enter a time between 12:10 (when you checked in) and 18:10. / Reported: 12:10–13:45 |
 | Check-in | Unused bookings are released after the check-in period | PASS |  |
 | Admin | Capacity cannot be reduced below the most people booked at the same time | PASS | The capacity cannot be lower than 3: that many people are booked at the same time on Fri 20 Nov at 18:20. Cancel bookings first if the capacity must be reduced. / Raising it to 6 is accepted |
+| Admin | A zone notice is shown on the dashboard, kept when not sent, and removed when cleared | PASS | Too long: A notice can be at most 255 characters. / Cleared notice is stored as NULL |
 | Admin | Closing a zone asks for confirmation, then cancels affected bookings and emails residents | PASS | 1 booking(s) cancelled after confirmation; residents notified |
 | Accounts | Deactivating and reactivating a resident sends an email each time | PASS |  |
 | Accounts | A resident can delete their own account (password and DELETE required); a confirmation email is sent | PASS | Wrong password: Your current password is incorrect. / Missing DELETE: Type DELETE in capital letters to confirm. |

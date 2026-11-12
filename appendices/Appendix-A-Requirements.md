@@ -18,7 +18,7 @@ This appendix provides the full acceptance conditions used to evaluate the funct
 | FR8 | Check out | Check-out records the exact time and frees the place at once. A resident still checked in after 6 hours is checked out automatically and asked for the real leaving time. | DC4, DC5 |
 | FR9 | Cancel a booking | A resident can cancel their own upcoming booking, and the place becomes free. | DC5 |
 | FR10 | Respect opening hours and closures | Bookings are only possible inside the opening hours and outside closures. When an administrator closes a zone or changes the hours, affected bookings are cancelled only after confirmation, and the residents are notified. | DC5 |
-| FR11 | Administer the gym | An administrator can manage residents and apartments, zone capacities, opening hours, closures, bookings and messages. A capacity lower than the most people already booked at the same time is refused. | DC1, DC5 |
+| FR11 | Administer the gym | An administrator can manage residents and apartments, zone capacities, zone notices, opening hours, closures, bookings and messages. A capacity lower than the most people already booked at the same time is refused. A zone notice (for example "1 treadmill is out of order") is shown to residents while the zone stays open. | DC1, DC5 |
 | FR12 | Manage accounts securely | There is no public registration. Residents added by an administrator activate their account through an email link valid for 24 hours. Password resets, email changes and password changes are confirmed by email, and residents can delete their account. | Service operation |
 | FR13 | Provide help and contact | A help page answers common questions, and signed-in residents can send a message to the housing office. | Service operation |
 

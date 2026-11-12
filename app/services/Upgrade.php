@@ -5,10 +5,11 @@
  *
  * Version 2: sessions start at any minute (time_slots table removed, open 24 hours by default),
  * automatic check-out after 6 hours with a reported check-out time, and contact messages.
+ * Version 3: a notice per zone (zones.notice), for example "1 treadmill is out of order".
  */
 final class Upgrade
 {
-    public const VERSION = 2;
+    public const VERSION = 3;
 
     public static function run(): void
     {
@@ -42,6 +43,12 @@ final class Upgrade
                 $email = Db::value("SELECT email FROM users WHERE role = 'admin' AND status = 'active' ORDER BY id LIMIT 1");
                 if ($email) Settings::set(['contact_email' => $email]);
             }
+        }
+        // From version 2 to version 3: add the zone notice column if it is missing.
+        if ($version < 3) {
+            $exists = Db::value("SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE()
+                                  AND TABLE_NAME = 'zones' AND COLUMN_NAME = 'notice'");
+            if (!$exists) Db::pdo()->exec('ALTER TABLE zones ADD COLUMN notice VARCHAR(255) NULL AFTER closed_note');
         }
         // Remember that this database is now up to date.
         Settings::set(['schema_version' => self::VERSION]);

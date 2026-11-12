@@ -2,7 +2,7 @@
 
 GymZone is tested at four levels:
 
-1. **Automated functional tests** (`tests/run_tests.php`): 49 tests of the business rules, the email flows and HTTP access control.
+1. **Automated functional tests** (`tests/run_tests.php`): 50 tests of the business rules, the email flows and HTTP access control.
 2. **Automated responsive layout check** (`tests/responsive_check.py`): every page at four screen widths.
 3. **Manual walkthrough**: the full user journeys in a real browser, on a phone-sized screen.
 4. **Usability walkthrough**: each functional requirement with a user interface, followed through the navigation without guidance.
@@ -53,6 +53,7 @@ Additional tests cover:
 
 - what happens when Mailpit is unavailable;
 - refusing a capacity below the most people booked at the same time;
+- a zone notice ("1 treadmill is out of order") shown without closing the zone, kept when not sent, and removed when cleared;
 - closing a zone (confirmation, cancellation, notification email);
 - deactivation and reactivation emails;
 - account deletion by the resident and by an administrator, with emails;
@@ -61,9 +62,9 @@ Additional tests cover:
 
 ### Latest result
 
-**49 passed, 0 failed, 0 skipped** (4 November 2026, 20:32). The full table with the actual messages is in `tests/TEST_RESULTS.md`.
+**50 passed, 0 failed, 0 skipped** (12 November 2026, 11:09). The full table with the actual messages is in `tests/TEST_RESULTS.md`.
 
-The suite was also run with Mailpit switched off (`GYM_MAILPIT_URL` pointing to a closed port): 48 passed, and the one Mailpit-specific check was skipped.
+The suite was also run with Mailpit switched off (`GYM_MAILPIT_URL` pointing to a closed port): 49 passed, and the one Mailpit-specific check was skipped.
 
 The upgrade from the first version was tested separately:
 
@@ -174,6 +175,6 @@ One problem was found. All tabs of a browser share one sign-in, so when a second
 ### Limits
 
 - The developer who designed the system carried out the walkthrough. It shows that every main task has a clear, working route through the interface, but not how residents who have never seen GymZone would experience it.
-- A broken machine can only be handled by closing its whole zone, either until it is reopened or for a set period, because GymZone has no record of individual equipment.
+- At the time of the walkthrough, a broken machine could only be handled by closing its whole zone, either until it is reopened or for a set period, because GymZone has no record of individual equipment. A zone notice was added afterwards, so residents can be warned without closing the zone; it is covered by an automated test but was not part of this walkthrough.
 
-A test with residents and a status for individual equipment are described as future work in the thesis.
+A test with residents and a status for individual equipment remain future work, described in the thesis.

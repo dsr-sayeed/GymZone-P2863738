@@ -33,6 +33,7 @@ View::header('Book a session', 'book');
       <section class="card" aria-labelledby="h-zone">
         <h2 id="h-zone">2. Choose a zone</h2>
         <div class="zone-picker" id="zone-picker"></div>
+        <p class="zone-notice" id="zone-notice" role="status" hidden></p>
       </section>
       <?php // Step 3: start time (any minute) and length, the live check result, and the hour-by-hour grid. ?>
       <section class="card" aria-labelledby="h-time">

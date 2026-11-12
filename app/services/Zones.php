@@ -30,15 +30,17 @@ final class Zones
         return ['count' => $peak, 'start' => $at ? dt((new DateTimeImmutable())->setTimestamp($at)) : null];
     }
 
-    // update(): an administrator changes a zone's name, description or capacity.
-    public static function update(int $id, string $name, string $description, int $capacity): void
+    // update(): an administrator changes a zone's name, description, capacity or notice.
+    // $notice: null keeps the current notice; an empty string removes it.
+    public static function update(int $id, string $name, string $description, int $capacity, ?string $notice = null): void
     {
         $zone = self::find($id) ?? throw new UserError('Zone not found.', 404);
         // Check the new values (capacity from 1 to 500).
         $name = Validator::text($name, 60, 'a zone name');
         $description = Validator::text($description, 255, 'a description', false);
         $capacity = Validator::intRange($capacity, 1, 500, 'Capacity');
-        Db::transaction(function () use ($id, $name, $description, $capacity) {
+        $notice = $notice === null ? $zone['notice'] : (Validator::text($notice, 255, 'a notice', false) ?: null);
+        Db::transaction(function () use ($id, $name, $description, $capacity, $notice) {
             Db::row('SELECT id FROM zones WHERE id = ? FOR UPDATE', [$id]);   // waits for bookings in progress
             // The new capacity may not be lower than the most people already booked at the same time.
             $peak = self::peakAllocation($id);
@@ -50,7 +52,7 @@ final class Zones
             }
             // Zone names are unique (uq_zones_name), so a name that is taken is refused with a message.
             try {
-                Db::run('UPDATE zones SET name = ?, description = ?, capacity = ? WHERE id = ?', [$name, $description, $capacity, $id]);
+                Db::run('UPDATE zones SET name = ?, description = ?, capacity = ?, notice = ? WHERE id = ?', [$name, $description, $capacity, $notice, $id]);
             } catch (PDOException $e) {
                 if (Db::isDuplicate($e)) throw new UserError('Another zone already has this name.');
                 throw $e;

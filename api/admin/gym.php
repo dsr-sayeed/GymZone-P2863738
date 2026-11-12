@@ -12,8 +12,9 @@ Http::api(function () use ($admin) {
     $cancelled = fn(int $n) => $n ? " $n booking" . ($n === 1 ? ' was' : 's were') . ' cancelled and the residents notified.' : '';
     switch (Http::str('action')) {
         case 'zone_update':
-            // Change the name, description or capacity (the capacity cannot go below the current bookings).
-            Zones::update(Http::int('id'), Http::str('name'), Http::str('description'), Http::int('capacity'));
+            // Change the name, description, capacity or notice (the capacity cannot go below the current bookings).
+            Zones::update(Http::int('id'), Http::str('name'), Http::str('description'), Http::int('capacity'),
+                array_key_exists('notice', Http::input()) ? Http::str('notice') : null);   // not sent: keep the current notice
             Http::ok(['message' => 'Zone saved. Availability has been recalculated.']);
         case 'zone_close':
             // Close a zone (asks first if bookings are affected).

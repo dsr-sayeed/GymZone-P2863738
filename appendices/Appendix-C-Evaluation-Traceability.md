@@ -14,7 +14,7 @@ This appendix links the planned evaluation scenarios (Table 3.2) and the functio
 | Walk-in registration | A walk-in at 13:52 runs 13:52–14:52; a chosen length of 45 minutes gives 15:20–16:05. | Pass |
 | Full zone | "Sorry, Weights is fully booked at 18:50"; when a zone becomes full later, a shorter session is suggested. | Pass |
 | Unclaimed reservation | Bookings not checked in by the end of the check-in period are released and the place is free again. | Pass |
-| Zone administration | A capacity below the 3 people booked at the same time is refused; raising it is accepted; closing a zone asks for confirmation, cancels the affected booking and emails the resident. | Pass |
+| Zone administration | A capacity below the 3 people booked at the same time is refused; raising it is accepted; a zone notice is shown on the dashboard without closing the zone and can be removed; closing a zone asks for confirmation, cancels the affected booking and emails the resident. | Pass |
 | Conflicting requests | 8 simultaneous requests for 3 places: exactly 3 stored. | Pass |
 | Presentation and access | 44 of 44 layout checks passed; all 11 usability walkthrough tasks completed through the intended route (Appendix F); residents receive 403 on administrator pages and APIs; requests without a CSRF token are refused. | Pass |
 
@@ -32,7 +32,7 @@ This appendix links the planned evaluation scenarios (Table 3.2) and the functio
 | FR8 | Attendance::checkOut(), Attendance::autoCheckOut(), Attendance::reportCheckOut() | Check-out (exact time; no penalty; 6-hour automatic check-out) | Pass |
 | FR9 | Bookings::cancel() | Cancellation (place released; own bookings only) | Pass |
 | FR10 | Schedule::isOpenDuring(), Schedule::applyChange() | Window (closed days, hours, closures); admin (closing a zone) | Pass |
-| FR11 | admin pages, Residents, Schedule, api/admin | Admin (capacity, closing); authorisation (admin access) | Pass |
+| FR11 | admin pages, Residents, Zones, Schedule, api/admin | Admin (capacity, zone notice, closing); authorisation (admin access) | Pass |
 | FR12 | Residents, Tokens, Account | Accounts; activation; sign-in; recovery; email and password change | Pass |
 | FR13 | help.php, api/contact.php, Contact | Contact (resident); Pages (no contact link on the sign- in pages) | Pass |
 

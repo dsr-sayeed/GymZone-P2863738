@@ -32,6 +32,7 @@ View::header('Manage gym', 'gym');
           <div class="field"><label for="zn-<?= $z['id'] ?>">Name</label><input id="zn-<?= $z['id'] ?>" name="name" value="<?= View::e($z['name']) ?>" required maxlength="60"></div>
           <div class="field"><label for="zd-<?= $z['id'] ?>">Description</label><input id="zd-<?= $z['id'] ?>" name="description" value="<?= View::e($z['description']) ?>" maxlength="255"></div>
           <div class="field"><label for="zc-<?= $z['id'] ?>">Capacity</label><input id="zc-<?= $z['id'] ?>" name="capacity" type="number" min="1" max="500" value="<?= (int) $z['capacity'] ?>" required></div>
+          <div class="field"><label for="zt-<?= $z['id'] ?>">Notice for residents (optional)</label><input id="zt-<?= $z['id'] ?>" name="notice" value="<?= View::e($z['notice'] ?? '') ?>" maxlength="255" placeholder="For example: 1 treadmill is out of order" aria-describedby="zt-help-<?= $z['id'] ?>"><p class="small muted" id="zt-help-<?= $z['id'] ?>">Shown on the zone card and the booking page while the zone stays open. Clear it and save to remove it.</p></div>
           <button class="btn btn-primary" type="submit">Save</button>
         </form>
         <p class="small muted">Most people booked at the same time from now on: <?= $peak['count'] ?><?= $peak['start'] ? ' (' . View::e(View::relDate($peak['start']) . ' ' . View::date($peak['start'], 'H:i')) . ')' : '' ?>. The capacity cannot go below this.</p>
