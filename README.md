@@ -5,6 +5,25 @@
 > **Thesis appendices:** [A. Requirements](appendices/Appendix-A-Requirements.md) · [B. Design change log](appendices/Appendix-B-Design-Change-Log.md) · [C. Evaluation traceability](appendices/Appendix-C-Evaluation-Traceability.md) · [D. Testing and results](appendices/Appendix-D-Testing-and-Results.md) · [E. Source code and installation](appendices/Appendix-E-Source-Code-and-Installation.md) · [F. Usability walkthrough](appendices/Appendix-F-Usability-Walkthrough.md)
 >
 > **Database script:** [`database/schema.sql`](database/schema.sql). Sample data is created by the installer (see step 4 below).
+>
+> **Evaluation database:** [`database/gymzone-evaluation.sql`](database/gymzone-evaluation.sql), with the two accounts below for the supervisor and second marker.
+
+## For the supervisor and second marker
+
+GymZone is evaluated with two existing accounts, one administrator and one resident. They are in the evaluation database, so **do not run `install.php`** and do not create new accounts.
+
+| Account | Email | Password |
+|---|---|---|
+| Administrator | `admin@gymzone.local` | `Password1234@#` |
+| Resident | `boomshaka@gmail.com` | `Password12@#` |
+
+1. Install [XAMPP](https://www.apachefriends.org/) and start **Apache** and **MySQL** in the XAMPP Control Panel.
+2. Download this repository (**Code → Download ZIP**), unzip it, rename the folder to `gymzone` and copy it into XAMPP's `htdocs` folder, for example `C:\xampp\htdocs\gymzone`.
+3. Open <http://localhost/phpmyadmin>, choose the **Import** tab, select `database/gymzone-evaluation.sql` from the `gymzone` folder and click **Import**. This creates the `gymzone` database with both accounts. (An existing database called `gymzone` is replaced.)
+4. Open <http://localhost/gymzone> and sign in with one of the accounts above. Use a private browser window for the second account, because all tabs of a browser share one sign-in.
+5. Optional, to see the emails GymZone sends (invitations, password resets, closure notices): start Mailpit as described in [step 3 of the installation](#step-3-start-mailpit) and open <http://localhost:8025>.
+
+The full installation below (sections 2–3) is only needed for a new, empty installation.
 
 GymZone is a web application for a residential housing community's gym. Residents can:
 
