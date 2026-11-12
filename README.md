@@ -112,7 +112,7 @@ Open <http://localhost/gymzone> and sign in.
 The sample data includes:
 
 - 12 residents: 10 active, 1 waiting for activation (`clara.madsen@example.com`, whose invitation is in Mailpit) and 1 deactivated
-- two shared apartments
+- four apartments shared by two residents
 - two weeks of past sessions at varied times, some of them left early
 - residents checked in right now
 - upcoming bookings
@@ -252,7 +252,7 @@ The test run:
 - starts PHP's built-in web server for the HTTP tests;
 - reads emails back from Mailpit to follow the real links.
 
-**49 tests** cover:
+**50 tests** cover:
 
 - account creation, activation through Mailpit, sign-in and sign-out
 - password recovery, email change (confirmed at the current address) and password change
@@ -261,7 +261,7 @@ The test run:
 - capacity with partly overlapping sessions, including a concurrency test with 8 simultaneous processes
 - duplicate and overlapping bookings, the 21-day window, opening hours and closures, cancellation
 - walk-ins from the exact minute, check-out times, leaving early, and the 6-hour automatic check-out with a reported time
-- administrator operations and authorization
+- administrator operations, including zone notices, and authorization
 
 Results are written to `tests/TEST_RESULTS.md`. The responsive layout check (`tests/responsive_check.py`, Python + Playwright) is described in [docs/TESTING.md](docs/TESTING.md).
 
